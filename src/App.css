@@ -29,3 +29,7 @@
  .com_text{
   font-family: "Montserrat", sans-serif;
  }
+
+ .com_btn{
+      background-color: linear-gradient(to right, #6a11cb, #2575fc);
+  }

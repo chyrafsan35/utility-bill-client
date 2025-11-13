@@ -134,13 +134,20 @@ const MyPayBills = () => {
                                     <td className="p-2">{info.phone}</td>
                                     <td className="p-2">{info.date}</td>
                                     <td className="p-2 space-x-2">
-                                        <button onClick={() => handleUpdate(info)} className="btn btn-sm">Update</button>
-                                        <button onClick={() => handleDelete(info._id)} className="btn btn-sm btn-error">Delete</button>
+                                        <button onClick={() => handleUpdate(info)} className="btn btn-soft btn-accent">Update</button>
+                                        <button onClick={() => handleDelete(info._id)} className="btn btn-soft btn-error">Delete</button>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+                    <div className="mb-4 flex justify-between items-center mt-5">
+                        <div>
+                            <span>Total Bills Paid: {bills.length}</span>
+                            <span className="ml-4">Total Amount: ৳{bills.reduce((sum, bill) => sum + Number(bill.amount), 0).toLocaleString()}</span>
+                        </div>
+                        <button onClick={handleDownloadReport} className="btn btn-soft btn-error">Download Report</button>
+                    </div>
                 </div>
             </div>
             <dialog ref={refUpdateModal} className="modal modal-bottom sm:modal-middle">
@@ -180,13 +187,7 @@ const MyPayBills = () => {
                     )}
                 </div>
             </dialog>
-            <div className="mb-4 flex justify-between items-center">
-                <div>
-                    <span>Total Bills Paid: {bills.length}</span>
-                    <span className="ml-4">Total Amount: ৳{bills.reduce((sum, bill) => sum + Number(bill.amount), 0).toLocaleString()}</span>
-                </div>
-                <button onClick={handleDownloadReport} className="btn btn-primary">Download Report</button>
-            </div>
+
         </div>
     );
 };
