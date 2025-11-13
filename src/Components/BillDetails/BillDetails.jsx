@@ -41,7 +41,7 @@ const BillDetails = () => {
             date : date
         }
 
-        fetch('http://localhost:3000/myBills', {
+        fetch('http://localhost:3000/usersBills', {
             method : 'POST',
             headers : {
                 'content-type' : 'application/json'

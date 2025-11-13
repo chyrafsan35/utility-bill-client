@@ -32,7 +32,9 @@ const router = createBrowserRouter([
         },
         {
             path : '/myPayBills',
-            Component : MyPayBills
+            element : <PrivateRoute>
+                <MyPayBills></MyPayBills>
+            </PrivateRoute>
         },
         {
             path : '/billDetails/:id',
