@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { use, useRef } from 'react';
 import { useLoaderData } from 'react-router';
+import { AuthContext } from '../../Context/AuthContext';
 
 const BillDetails = () => {
     const detailedBill = useLoaderData();
     console.log(detailedBill)
-    const { title, category, location, description, image, amount, date } = detailedBill;
+    const { _id, title, category, location, description, image, amount, date } = detailedBill;
 
     const billDate = new Date(date);
     const currentDate = new Date();
@@ -13,24 +14,124 @@ const BillDetails = () => {
         billDate.getMonth() === currentDate.getMonth() &&
         billDate.getFullYear() === currentDate.getFullYear();
 
+    const refModal = useRef();
+    const handleModal = () => {
+        refModal.current.showModal();
+    }
+
+    const {user} = use(AuthContext)
+
     return (
-        <div className="card bg-base-100 w-96 shadow-sm">
-            <figure>
-                <img
-                    src={image}
-                    alt={title} />
-            </figure>
-            <div className="card-body">
-                <h2 className="card-title">{title}</h2>
-                <p>{description}</p>
-                <span>{category}</span>
-                <span>{location}</span>
-                <span>{date}</span>
-                <span>{amount}</span>
-                <div className="card-actions justify-end">
-                    <button disabled={!isCurrentMonth} className="btn btn-primary">Pay Bill</button>
+        <div>
+            <div className="card bg-base-100 w-96 shadow-sm">
+                <figure>
+                    <img
+                        src={image}
+                        alt={title} />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">{title}</h2>
+                    <p>{description}</p>
+                    <span>{category}</span>
+                    <span>{location}</span>
+                    <span>{date}</span>
+                    <span>{amount}</span>
+                    <div className="card-actions justify-end">
+                        <button onClick={handleModal} disabled={!isCurrentMonth} className="btn btn-primary">Pay Bill</button>
+                    </div>
                 </div>
             </div>
+
+            {/* Open the modal using document.getElementById('ID').showModal() method */}
+
+            <dialog ref={refModal} className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Bill Information</h3>
+
+                    <form class="space-y-4">
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Email</label>
+                            <input name="email" type="email" readOnly defaultValue={user.email}
+                                class="mt-1 block w-full rounded-md border-gray-200 shadow-sm bg-gray-100 focus:ring focus:ring-indigo-200 p-2"
+                             />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Bill ID</label>
+                            <input name="billId" type="text" readOnly
+                                class="mt-1 block w-full rounded-md border-gray-200 bg-gray-100 p-2"
+                                defaultValue={_id} />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Amount</label>
+                            <div class="mt-1 relative rounded-md shadow-sm">
+                                <input name="amount" type="text" readOnly
+                                    class="block w-full pr-12 rounded-md border-gray-200 bg-gray-100 p-2"
+                                    defaultValue={amount} />
+                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-500">
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Username</label>
+                            <input name="username" type="text" required minLength="2"
+                                class="mt-1  border block w-full rounded-md border-gray-300 p-2"
+                                placeholder="Your full name" />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Address</label>
+                            <input name="address" type="text"
+                                class="mt-1 border block w-full rounded-md border-gray-300 p-2"
+                                placeholder="Your address (street, area, city)" />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Phone</label>
+                            <input name="phone" type="tel" required
+                                pattern="^\+?\d{8,15}$"
+                                title="Enter a valid phone number (8–15 digits, optional leading +)"
+                                class="mt-1 border block w-full rounded-md border-gray-300 p-2"
+                                placeholder="+8801XXXXXXXXX" />
+                           
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Date</label>
+                            <input name="date" type="text" readOnly
+                                class="mt-1 block w-full rounded-md border-gray-200 bg-gray-100 p-2"
+                                defaultValue={date} />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Additional info (optional)</label>
+                            <textarea name="additional" rows="3"
+                                class="mt-1 block w-full rounded-md border border-gray-300 p-2"
+                                placeholder="Any extra details (notes, reference, etc.)"></textarea>
+                        </div>
+
+                        <div class="pt-4">
+                            <button type="submit"
+                                class="w-full inline-flex justify-center rounded-md bg-indigo-600 px-4 py-2 text-white font-medium hover:bg-indigo-700 disabled:opacity-60"
+                            >
+                                Pay Bill
+                            </button>
+                            <p class="text-sm mt-2 text-red-500 hidden"></p>
+                        </div>
+                    </form>
+
+                    <div className="modal-action">
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </div>
     );
 };
