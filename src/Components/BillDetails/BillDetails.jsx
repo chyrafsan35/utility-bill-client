@@ -21,6 +21,27 @@ const BillDetails = () => {
 
     const {user} = use(AuthContext)
 
+    const handleBilling =(e)=>{
+        e.preventDefault();
+        const username = e.target.username.value;
+        const email = e.target.email.value;
+        const amount = e.target.amount.value;
+        const address = e.target.address.value;
+        const phone = e.target.phone.value;
+        const date = e.target.date.value;
+        const additional = e.target.additional.value;
+        console.log(additional)
+
+        const addedBill = {
+            username : username,
+            email : email,
+            amount : amount,
+            address : address,
+            phone : phone,
+            date : date
+        }
+    }
+
     return (
         <div>
             <div className="card bg-base-100 w-96 shadow-sm">
@@ -48,7 +69,7 @@ const BillDetails = () => {
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Bill Information</h3>
 
-                    <form class="space-y-4">
+                    <form onSubmit={handleBilling} class="space-y-4">
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Email</label>
