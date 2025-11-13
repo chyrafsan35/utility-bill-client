@@ -55,6 +55,19 @@ const MyPayBills = () => {
             })
     }
 
+    const handleDelete = (billId) => {
+        if (window.confirm('Are you sure you want to delete this bill?')) {
+            fetch(`http://localhost:3000/usersBills/${billId}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setBills(prev => prev.filter(b => b._id !== billId));
+                })
+        }
+    };
+
 
     return (
         <div>
@@ -85,7 +98,7 @@ const MyPayBills = () => {
                                     <td>{info.address}</td>
                                     <td>{info.phone}</td>
                                     <td>{info.date}</td>
-                                    <td><button onClick={() => handleUpdate(info)} className='btn'>Update</button> <button className='btn'>Delete</button></td>
+                                    <td><button onClick={() => handleUpdate(info)} className='btn'>Update</button> <button onClick={() => handleDelete(info._id)} className='btn'>Delete</button></td>
                                 </tr>)
                             }
                         </tbody>
