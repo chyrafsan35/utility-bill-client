@@ -2,6 +2,7 @@ import React, { use, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import jsPDF from "jspdf";
 import autoTable from "jspdf-auTotable";
+import '../../App.css'
 
 const MyPayBills = () => {
     const { user } = use(AuthContext)
@@ -106,12 +107,12 @@ const MyPayBills = () => {
 
     return (
         <div>
-            <p>My Pay Bills : {bills.length}</p>
+            <p className='common_p mt-10'> My Pay Bills : {bills.length}</p>
             <div className="max-w-[1440px] mx-auto p-5">
                 <div className="overflow-x-auto">
-                    <table className="table table-auto min-w-full border border-gray-400 bg-base-100">
+                    <table className=".com_text table table-auto min-w-full border border-gray-400 bg-base-100">
                         <thead className="bg-gray-200">
-                            <tr>
+                            <tr className='.com_text'>
                                 <th className="p-2 text-left">SL No.</th>
                                 <th className="p-2 text-left">Username</th>
                                 <th className="p-2 text-left">Email</th>
