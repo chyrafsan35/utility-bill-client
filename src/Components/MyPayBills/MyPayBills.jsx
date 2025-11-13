@@ -1,5 +1,7 @@
 import React, { use, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const MyPayBills = () => {
     const { user } = use(AuthContext)
@@ -70,6 +72,30 @@ const MyPayBills = () => {
 
     const totalBills = bills.length;
     const totalAmount = bills.reduce((sum, bill) => sum + Number(bill.amount), 0);
+
+    const doc = new jsPDF();
+    doc.setFontSize(18);
+    doc.text("My Bills Report", 14, 22);
+    const tableColumn = ["SL", "Username", "Email", "Amount", "Address", "Phone", "Date"];
+    const tableRows = bills.map((bill, index) => [
+        index + 1,
+        bill.username,
+        bill.email,
+        bill.amount,
+        bill.address,
+        bill.phone,
+        bill.date
+    ]);
+
+    doc.autoTable({
+        head: [tableColumn],
+        body: tableRows,
+        startY: 30,
+    });
+
+    doc.text(`Total Bills: ${bills.length}`, 14, doc.lastAutoTable.finalY + 10);
+    doc.text(`Total Amount: ৳${totalAmount.toLocaleString()}`, 14, doc.lastAutoTable.finalY + 20);
+    doc.save("My_Bills_Report.pdf");
 
 
     return (
