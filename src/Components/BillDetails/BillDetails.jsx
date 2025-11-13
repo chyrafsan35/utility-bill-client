@@ -40,6 +40,19 @@ const BillDetails = () => {
             phone : phone,
             date : date
         }
+
+        fetch('http://localhost:3000/myBills', {
+            method : 'POST',
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify(addedBill)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log('Billing data added', data)
+            e.target.reset();
+        })
     }
 
     return (
