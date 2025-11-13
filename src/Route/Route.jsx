@@ -6,6 +6,7 @@ import Login from '../Components/Login/Login';
 import Register from '../Components/Register/Register';
 import MyPayBills from '../Components/MyPayBills/MyPayBills';
 import BillDetails from '../Components/BillDetails/BillDetails';
+import PrivateRoute from './PrivateRoute';
 ;
 
 const router = createBrowserRouter([
@@ -36,7 +37,9 @@ const router = createBrowserRouter([
         {
             path : '/billDetails/:id',
             loader : ({params})=>fetch(`http://localhost:3000/bills/${params.id}`),
-            Component : BillDetails
+            element : <PrivateRoute>
+                <BillDetails></BillDetails>
+            </PrivateRoute>
         },
     ]
   }

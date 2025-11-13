@@ -6,6 +6,13 @@ const BillDetails = () => {
     console.log(detailedBill)
     const { title, category, location, description, image, amount, date } = detailedBill;
 
+    const billDate = new Date(date);
+    const currentDate = new Date();
+
+    const isCurrentMonth =
+        billDate.getMonth() === currentDate.getMonth() &&
+        billDate.getFullYear() === currentDate.getFullYear();
+
     return (
         <div className="card bg-base-100 w-96 shadow-sm">
             <figure>
@@ -21,7 +28,7 @@ const BillDetails = () => {
                 <span>{date}</span>
                 <span>{amount}</span>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Pay Bill</button>
+                    <button disabled={!isCurrentMonth} className="btn btn-primary">Pay Bill</button>
                 </div>
             </div>
         </div>
