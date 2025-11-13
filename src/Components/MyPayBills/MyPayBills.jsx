@@ -1,7 +1,7 @@
 import React, { use, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import jsPDF from "jspdf";
-import "jspdf-autotable";
+import autoTable from "jspdf-auTotable";
 
 const MyPayBills = () => {
     const { user } = use(AuthContext)
@@ -73,66 +73,73 @@ const MyPayBills = () => {
     const totalBills = bills.length;
     const totalAmount = bills.reduce((sum, bill) => sum + Number(bill.amount), 0);
 
-    const doc = new jsPDF();
-    doc.setFontSize(18);
-    doc.text("My Bills Report", 14, 22);
-    const tableColumn = ["SL", "Username", "Email", "Amount", "Address", "Phone", "Date"];
-    const tableRows = bills.map((bill, index) => [
-        index + 1,
-        bill.username,
-        bill.email,
-        bill.amount,
-        bill.address,
-        bill.phone,
-        bill.date
-    ]);
+    const handleDownloadReport = () => {
+        if (!bills || totalBills === 0) {
+            alert("No bills to download");
+            return;
+        }
 
-    doc.autoTable({
-        head: [tableColumn],
-        body: tableRows,
-        startY: 30,
-    });
+        const doc = new jsPDF();
+        doc.setFontSize(18);
+        doc.text("My Bills Report", 14, 22);
 
-    doc.text(`Total Bills: ${bills.length}`, 14, doc.lastAutoTable.finalY + 10);
-    doc.text(`Total Amount: ৳${totalAmount.toLocaleString()}`, 14, doc.lastAutoTable.finalY + 20);
-    doc.save("My_Bills_Report.pdf");
+        autoTable(doc, {
+            head: [["SL", "Username", "Email", "Amount", "Address", "Phone", "Date"]],
+            body: bills.map((bill, index) => [
+                index + 1,
+                bill.username,
+                bill.email,
+                bill.amount,
+                bill.address,
+                bill.phone,
+                bill.date
+            ]),
+            startY: 30
+        });
+
+        doc.text(`Total Bills: ${bills.length}`, 14, doc.lastAutoTable.finalY + 10);
+        doc.text(`Total Amount: ৳${totalAmount.toLocaleString()}`, 14, doc.lastAutoTable.finalY + 20);
+        doc.save("My_Bills_Report.pdf");
+
+    }
 
 
     return (
         <div>
             <p>My Pay Bills : {bills.length}</p>
-            <div className='max-w-[1440px] mx-auto p-5'>
-                <div className="overflow-x-auto rounded-box border border-gray-400 bg-base-100">
-                    <table className="table">
-                        {/* head */}
-                        <thead>
+            <div className="max-w-[1440px] mx-auto p-5">
+                <div className="overflow-x-auto">
+                    <table className="table table-auto min-w-full border border-gray-400 bg-base-100">
+                        <thead className="bg-gray-200">
                             <tr>
-                                <th>SL No.</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Amount</th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th>Date</th>
-                                <th>Actions</th>
+                                <th className="p-2 text-left">SL No.</th>
+                                <th className="p-2 text-left">Username</th>
+                                <th className="p-2 text-left">Email</th>
+                                <th className="p-2 text-left">Amount</th>
+                                <th className="p-2 text-left">Address</th>
+                                <th className="p-2 text-left">Phone</th>
+                                <th className="p-2 text-left">Date</th>
+                                <th className="p-2 text-left">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                bills.map((info, index) => <tr key={info._id}>
-                                    <th>{index + 1}</th>
-                                    <td>{info.username}</td>
-                                    <td>{info.email}</td>
-                                    <td>{info.amount}</td>
-                                    <td>{info.address}</td>
-                                    <td>{info.phone}</td>
-                                    <td>{info.date}</td>
-                                    <td><button onClick={() => handleUpdate(info)} className='btn'>Update</button> <button onClick={() => handleDelete(info._id)} className='btn'>Delete</button></td>
-                                </tr>)
-                            }
+                            {bills.map((info, index) => (
+                                <tr key={info._id} className="border-t">
+                                    <td className="p-2">{index + 1}</td>
+                                    <td className="p-2">{info.username}</td>
+                                    <td className="p-2">{info.email}</td>
+                                    <td className="p-2">{info.amount}</td>
+                                    <td className="p-2">{info.address}</td>
+                                    <td className="p-2">{info.phone}</td>
+                                    <td className="p-2">{info.date}</td>
+                                    <td className="p-2 space-x-2">
+                                        <button onClick={() => handleUpdate(info)} className="btn btn-sm">Update</button>
+                                        <button onClick={() => handleDelete(info._id)} className="btn btn-sm btn-error">Delete</button>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
-
                 </div>
             </div>
             <dialog ref={refUpdateModal} className="modal modal-bottom sm:modal-middle">
@@ -172,9 +179,12 @@ const MyPayBills = () => {
                     )}
                 </div>
             </dialog>
-            <div className="mb-4 p-4 border rounded bg-base-200 flex justify-between items-center">
-                <span>Total Bills Paid: {totalBills}</span>
-                <span>Total Amount: ৳{totalAmount.toLocaleString()}</span>
+            <div className="mb-4 flex justify-between items-center">
+                <div>
+                    <span>Total Bills Paid: {bills.length}</span>
+                    <span className="ml-4">Total Amount: ৳{bills.reduce((sum, bill) => sum + Number(bill.amount), 0).toLocaleString()}</span>
+                </div>
+                <button onClick={handleDownloadReport} className="btn btn-primary">Download Report</button>
             </div>
         </div>
     );
