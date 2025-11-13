@@ -68,6 +68,9 @@ const MyPayBills = () => {
         }
     };
 
+    const totalBills = bills.length;
+    const totalAmount = bills.reduce((sum, bill) => sum + Number(bill.amount), 0);
+
 
     return (
         <div>
@@ -143,6 +146,10 @@ const MyPayBills = () => {
                     )}
                 </div>
             </dialog>
+            <div className="mb-4 p-4 border rounded bg-base-200 flex justify-between items-center">
+                <span>Total Bills Paid: {totalBills}</span>
+                <span>Total Amount: ৳{totalAmount.toLocaleString()}</span>
+            </div>
         </div>
     );
 };
