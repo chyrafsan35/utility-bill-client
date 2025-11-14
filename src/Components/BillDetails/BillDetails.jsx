@@ -76,7 +76,7 @@ const BillDetails = () => {
                         <span>{date}</span>
                         <span>{amount}</span>
                         <div className=" mt-3">
-                            <button onClick={handleModal} disabled={!isCurrentMonth} className="btn btn-primary">Pay Bill</button>
+                            <button onClick={handleModal} disabled={!isCurrentMonth} className="btn btn-primary bg-[#CC86F0] hover:bg-[#8C1AC9] border-none">Pay Bill</button>
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@ const BillDetails = () => {
 
                         <div class="pt-4">
                             <button type="submit"
-                                class="w-full inline-flex justify-center rounded-md bg-indigo-600 px-4 py-2 text-white font-medium hover:bg-indigo-700 disabled:opacity-60"
+                                class="w-full inline-flex justify-center rounded-md bg-[#CC86F0] hover:bg-[#8C1AC9] px-4 py-2 text-white font-medium  disabled:opacity-60"
                             >
                                 Pay Bill
                             </button>

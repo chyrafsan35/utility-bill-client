@@ -7,6 +7,7 @@ import Register from '../Components/Register/Register';
 import MyPayBills from '../Components/MyPayBills/MyPayBills';
 import BillDetails from '../Components/BillDetails/BillDetails';
 import PrivateRoute from './PrivateRoute';
+import NotFound from '../Components/NotFound/NotFound';
 ;
 
 const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
                 <BillDetails></BillDetails>
             </PrivateRoute>
         },
+        {
+            path : '*',
+            element : <NotFound></NotFound>
+        }
     ]
   }
 ]);
