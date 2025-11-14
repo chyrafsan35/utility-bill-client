@@ -13,7 +13,7 @@ const MyPayBills = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/usersBills?email=${user.email}`)
+            fetch(`https://utility-api-server.vercel.app/usersBills?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log('User data', data)
@@ -43,7 +43,7 @@ const MyPayBills = () => {
             date: date
         }
 
-        fetch(`http://localhost:3000/usersBills/${selectedBill._id}`, {
+        fetch(`https://utility-api-server.vercel.app/usersBills/${selectedBill._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -67,7 +67,7 @@ const MyPayBills = () => {
 
     const handleDelete = (billId) => {
         if (window.confirm('Are you sure you want to delete this bill?')) {
-            fetch(`http://localhost:3000/usersBills/${billId}`, {
+            fetch(`https://utility-api-server.vercel.app/usersBills/${billId}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

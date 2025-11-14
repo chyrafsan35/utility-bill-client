@@ -43,7 +43,7 @@ const BillDetails = () => {
             date: date
         }
 
-        fetch('http://localhost:3000/usersBills', {
+        fetch('https://utility-api-server.vercel.app/usersBills', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

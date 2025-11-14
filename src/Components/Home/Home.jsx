@@ -8,7 +8,7 @@ const Home = () => {
     const [recentBills, setRecentBills] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/recent-bills')
+        fetch('https://utility-api-server.vercel.app/recent-bills')
             .then(res => res.json())
             .then(data => setRecentBills(data))
             .catch(err => console.error(err));

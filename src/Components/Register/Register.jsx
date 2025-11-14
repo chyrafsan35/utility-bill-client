@@ -42,7 +42,7 @@ const Register = () => {
                         }
 
                         //adding user to database
-                        fetch('http://localhost:3000/users', {
+                        fetch('https://utility-api-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json',
