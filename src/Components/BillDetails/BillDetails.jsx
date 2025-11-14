@@ -1,6 +1,7 @@
 import React, { use, useRef } from 'react';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
+import tree from '../../assets/tree-branch.png';
 
 const BillDetails = () => {
     const detailedBill = useLoaderData();
@@ -19,9 +20,9 @@ const BillDetails = () => {
         refModal.current.showModal();
     }
 
-    const {user} = use(AuthContext)
+    const { user } = use(AuthContext)
 
-    const handleBilling =(e)=>{
+    const handleBilling = (e) => {
         e.preventDefault();
         const username = e.target.username.value;
         const email = e.target.email.value;
@@ -33,45 +34,50 @@ const BillDetails = () => {
         console.log(additional)
 
         const addedBill = {
-            username : username,
-            email : email,
-            amount : amount,
-            address : address,
-            phone : phone,
-            date : date
+            username: username,
+            email: email,
+            amount: amount,
+            address: address,
+            phone: phone,
+            date: date
         }
 
         fetch('http://localhost:3000/usersBills', {
-            method : 'POST',
-            headers : {
-                'content-type' : 'application/json'
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
             },
-            body : JSON.stringify(addedBill)
+            body: JSON.stringify(addedBill)
         })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log('Billing data added', data)
-            e.target.reset();
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('Billing data added', data)
+                e.target.reset();
+            })
     }
 
     return (
-        <div>
-            <div className="card bg-base-100 w-96 shadow-sm">
-                <figure>
-                    <img
-                        src={image}
-                        alt={title} />
-                </figure>
-                <div className="card-body">
-                    <h2 className="card-title">{title}</h2>
-                    <p>{description}</p>
-                    <span>{category}</span>
-                    <span>{location}</span>
-                    <span>{date}</span>
-                    <span>{amount}</span>
-                    <div className="card-actions justify-end">
-                        <button onClick={handleModal} disabled={!isCurrentMonth} className="btn btn-primary">Pay Bill</button>
+        <div className=' bg-gradient-to-r from-[#CC86F0] to-[#8C1AC9] relative overflow-hidden'>
+            <img className='max-w-[300px] md:max-w-[500px] absolute right-0 top-[-150px]' src={tree} alt="" />
+            <div className='flex flex-col md:flex-row gap-3 max-w-[1440px] mx-auto px-5 md:px-15 py-10'>
+                <div className=' bg-white rounded-sm px-3 py-10 mx-auto'>
+                    <div className="card bg-base-100 w-96 shadow-sm mx-auto">
+                        <figure className='mx-auto'>
+                            <img
+                                src={image}
+                                alt={title} />
+                        </figure>
+                    </div>
+                    <div className="card-body">
+                        <h2 className="card-title">{title}</h2>
+                        <p>{description}</p>
+                        <span>{category}</span>
+                        <span>{location}</span>
+                        <span>{date}</span>
+                        <span>{amount}</span>
+                        <div className=" mt-3">
+                            <button onClick={handleModal} disabled={!isCurrentMonth} className="btn btn-primary">Pay Bill</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,12 +89,12 @@ const BillDetails = () => {
                     <h3 className="font-bold text-lg">Bill Information</h3>
 
                     <form onSubmit={handleBilling} class="space-y-4">
-                        
+
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Email</label>
                             <input name="email" type="email" readOnly defaultValue={user.email}
                                 class="mt-1 block w-full rounded-md border-gray-200 shadow-sm bg-gray-100 focus:ring focus:ring-indigo-200 p-2"
-                             />
+                            />
                         </div>
 
                         <div>
@@ -105,7 +111,7 @@ const BillDetails = () => {
                                     class="block w-full pr-12 rounded-md border-gray-200 bg-gray-100 p-2"
                                     defaultValue={amount} />
                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-500">
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -131,7 +137,7 @@ const BillDetails = () => {
                                 title="Enter a valid phone number (8–15 digits, optional leading +)"
                                 class="mt-1 border block w-full rounded-md border-gray-300 p-2"
                                 placeholder="+8801XXXXXXXXX" />
-                           
+
                         </div>
 
                         <div>
