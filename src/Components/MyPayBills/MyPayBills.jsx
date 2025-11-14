@@ -148,7 +148,7 @@ const MyPayBills = () => {
                             <span>Total Bills Paid: {bills.length}</span>
                             <span className="ml-4">Total Amount: ৳{bills.reduce((sum, bill) => sum + Number(bill.amount), 0).toLocaleString()}</span>
                         </div>
-                        <button onClick={handleDownloadReport} className="btn btn-soft btn-error">Download Report</button>
+                        <button onClick={handleDownloadReport} className="btn border-none text-white bg-[#8FC6FF] hover:bg-[#007BFF]">Download Report</button>
                     </div>
                 </div>
             </div>
