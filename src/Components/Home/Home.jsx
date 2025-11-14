@@ -22,7 +22,7 @@ const Home = () => {
                 <Category></Category>
             </div>
 
-            <div className=' bg-gradient-to-r from-[#F5DA8C] to-[#EDD180] relative overflow-hidden'>
+            <div className=' bg-gradient-to-r from-[#F5DA8C] to-[#f6ca47] relative overflow-hidden'>
                 <img className='max-w-[300px] md:max-w-[500px] absolute right-0 top-[-150px]' src={tree} alt="" />
                 <RecentBills recentBills={recentBills}></RecentBills>
             </div>

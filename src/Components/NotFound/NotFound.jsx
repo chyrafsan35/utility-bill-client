@@ -11,7 +11,7 @@ const NotFound = () => {
             <p className="text-center text-gray-800 mb-8 max-w-md">
                 The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
             </p>
-            <Link to="/" className="px-6 py-3 btn btn-outline btn-success text-white rounded-lg shadow  transition">
+            <Link to="/" className="px-6 py-3 btn border-none text-white bg-[#C8FAA7] hover:bg-[#3A8C08] rounded-lg shadow  transition">
                 Go Back Home
             </Link>
         </div>

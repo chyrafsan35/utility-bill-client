@@ -26,11 +26,11 @@ const Bills = () => {
                                     <img src={bill.image} alt="" />
                                 </div>
                                 <h2 className="card-title">{bill.title}</h2>
-                                <p><span className='px-2 py-1 text-center rounded-[15px]  bg-[#F59887] mr-3'>Category </span> {bill.category}</p>
-                                <p><span className='px-2 py-1 text-center rounded-[15px]  bg-[#F59887] mr-3'>Location </span> {bill.location}</p>
+                                <p><span className='px-2 py-1 text-center rounded-[15px]  bg-[#FA8282] mr-3'>Category </span> {bill.category}</p>
+                                <p><span className='px-2 py-1 text-center rounded-[15px]  bg-[#FA8282] mr-3'>Location </span> {bill.location}</p>
                                 <p>{bill.date}</p>
                                 <div className="card-actions justify-end">
-                                    <Link to={`/billDetails/${bill._id}`} className='btn com_btn'>See Details</Link>
+                                    <Link to={`/billDetails/${bill._id}`} className='btn text-white bg-[#FA8282] hover:bg-[#FF3636]'>See Details</Link>
                                 </div>
                             </div>
                         </div>)

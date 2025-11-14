@@ -8,11 +8,11 @@ const FrontBills = ({bill}) => {
         <div className="card bg-base-100 w-96 shadow-sm mx-auto">
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
-                <p><span className='px-2 py-1 text-center rounded-[15px]  bg-[#F59887] mr-3'>Category </span> {category}</p>
-                <p><span className='px-2 py-1 text-center rounded-[15px]  bg-[#F59887] mr-3'>Location </span> {location}</p>
+                <p><span className='px-2 py-1 text-center rounded-[15px]  bg-[#F5DA8C] mr-3'>Category </span> {category}</p>
+                <p><span className='px-2 py-1 text-center rounded-[15px]  bg-[#F5DA8C] mr-3'>Location </span> {location}</p>
                 <p>{date}</p>
                 <div className="card-actions justify-end">
-                    <Link to={`/billDetails/${_id}`} className='btn com_btn'>See Details</Link>
+                    <Link to={`/billDetails/${_id}`} className='btn text-white bg-[#F5DA8C] hover:bg-[#f6ca47]'>See Details</Link>
                 </div>
             </div>
         </div>
