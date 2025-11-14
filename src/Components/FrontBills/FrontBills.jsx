@@ -12,7 +12,7 @@ const FrontBills = ({bill}) => {
                 <p><span className='px-2 py-1 text-center rounded-[15px]  bg-[#F5DA8C] mr-3'>Location </span> {location}</p>
                 <p>{date}</p>
                 <div className="card-actions justify-end">
-                    <Link to={`/billDetails/${_id}`} className='btn text-white bg-[#F5DA8C] hover:bg-[#f6ca47]'>See Details</Link>
+                    <Link to={`/billDetails/${_id}`} className='btn btn-neutral mt-4'>See Details</Link>
                 </div>
             </div>
         </div>

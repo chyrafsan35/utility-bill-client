@@ -2,6 +2,7 @@ import React, { use, useRef } from 'react';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import tree from '../../assets/tree-branch.png';
+import Swal from 'sweetalert2';
 
 const BillDetails = () => {
     const detailedBill = useLoaderData();
@@ -51,7 +52,12 @@ const BillDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('Billing data added', data)
+                console.log('Billing data added', data);
+                Swal.fire({
+                    title: "Bill Paid",
+                    icon: "success",
+                    draggable: true
+                });
                 e.target.reset();
             })
     }
@@ -76,7 +82,7 @@ const BillDetails = () => {
                         <span>{date}</span>
                         <span>{amount}</span>
                         <div className=" mt-3">
-                            <button onClick={handleModal} disabled={!isCurrentMonth} className="btn text-white btn-primary bg-[#CC86F0] hover:bg-[#8C1AC9] border-none">Pay Bill</button>
+                            <button onClick={handleModal} disabled={!isCurrentMonth} className="btn btn-neutral mt-4">Pay Bill</button>
                         </div>
                     </div>
                 </div>
@@ -156,7 +162,7 @@ const BillDetails = () => {
 
                         <div class="pt-4">
                             <button type="submit"
-                                class="w-full inline-flex justify-center rounded-md text-white bg-[#CC86F0] hover:bg-[#8C1AC9] px-4 py-2 text-white font-medium  disabled:opacity-60"
+                                class="w-full inline-flex justify-center rounded-md btn btn-neutral mt-4 px-4 py-2  font-medium  disabled:opacity-60"
                             >
                                 Pay Bill
                             </button>
@@ -167,7 +173,7 @@ const BillDetails = () => {
                     <div className="modal-action">
                         <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
-                            <button className="btn text-white bg-[#CC86F0] hover:bg-[#8C1AC9]">Close</button>
+                            <button className="btn btn-neutral mt-4">Close</button>
                         </form>
                     </div>
                 </div>

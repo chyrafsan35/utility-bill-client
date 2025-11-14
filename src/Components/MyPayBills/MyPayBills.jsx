@@ -4,6 +4,7 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-auTotable";
 import '../../App.css';
 import tree from '../../assets/tree-branch.png';
+import Swal from 'sweetalert2';
 
 const MyPayBills = () => {
     const { user } = use(AuthContext)
@@ -51,7 +52,12 @@ const MyPayBills = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('Updated', data)
+                console.log('Updated', data);
+                Swal.fire({
+                    title: "Bill updated",
+                    icon: "success",
+                    draggable: true
+                });
                 refUpdateModal.current.close();
                 setBills(prev =>
                     prev.map(b => b._id === selectedBill._id ? { ...b, ...updatedBill } : b)
@@ -136,8 +142,8 @@ const MyPayBills = () => {
                                     <td className="p-2">{info.phone}</td>
                                     <td className="p-2">{info.date}</td>
                                     <td className="p-2 space-x-2">
-                                        <button onClick={() => handleUpdate(info)} className="btn btn-soft btn-accent">Update</button>
-                                        <button onClick={() => handleDelete(info._id)} className="btn btn-soft btn-error">Delete</button>
+                                        <button onClick={() => handleUpdate(info)} className="btn btn-neutral ">Update</button>
+                                        <button onClick={() => handleDelete(info._id)} className="btn btn-neutral ">Delete</button>
                                     </td>
                                 </tr>
                             ))}

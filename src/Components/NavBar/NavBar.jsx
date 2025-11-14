@@ -24,7 +24,7 @@ const NavBar = () => {
         {
             user ? <><li><NavLink to={'/myPayBills'}>My Pay Bills</NavLink></li>
                 <li><img className='max-w-10 max-h-10 mr-3 rounded-full' src={`${user.photoURL}`} alt="" /></li>
-                <li><button onClick={handleSignOut} className='btn border-none'>Logout</button></li>
+                <li><button onClick={handleSignOut} className='btn btn-neutral'>Logout</button></li>
                 </> 
                 :
                 <> <li><NavLink to={'/login'}>Login</NavLink></li> <li><NavLink to={'/register'}>Register</NavLink></li></>

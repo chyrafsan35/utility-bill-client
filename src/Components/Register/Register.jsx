@@ -1,7 +1,7 @@
 import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
-import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const { register, signInWithGoogle, setUser, updateUser } = use(AuthContext)
@@ -51,7 +51,7 @@ const Register = () => {
                         })
                             .then(res => res.json())
                             .then(data => {
-                                console.log('User data', data)
+                                console.log('User data', data);
                             })
                     })
 
@@ -59,7 +59,11 @@ const Register = () => {
             })
             .catch(error => console.log(error))
         e.target.reset();
-        toast('Successfully registered!')
+        Swal.fire({
+            title: "Successfully registered !",
+            icon: "success",
+            draggable: true
+        });
         navigate('/')
     }
 

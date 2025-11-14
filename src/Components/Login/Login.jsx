@@ -3,7 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../../firebase/firebase.init';
-import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+
 
 const Login = () => {
     const { login, signInWithGoogle } = use(AuthContext)
@@ -19,13 +20,21 @@ const Login = () => {
         login(email, password)
             .then(result => {
                 console.log(result, 'Hi')
-                toast('Successfully logged in!')
+                Swal.fire({
+                    title: "Successfully logged in !",
+                    icon: "success",
+                    draggable: true
+                });
                 e.target.reset();
                 navigate(location.state || '/')
             })
             .catch(error => {
                 console.log(error.message)
-                toast('Failed to log in!')
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                });
             })
     }
 
@@ -37,13 +46,13 @@ const Login = () => {
             });
     }
 
-    const handleForgetPassword = ()=> {
+    const handleForgetPassword = () => {
         const email = emailRef.current.value;
         sendPasswordResetEmail(auth, email)
-        .then(()=>{
-            alert('Please check your email!')
-        })
-        .catch()
+            .then(() => {
+                alert('Please check your email!')
+            })
+            .catch()
     }
 
     return (

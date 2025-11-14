@@ -30,7 +30,7 @@ const Bills = () => {
                                 <p><span className='px-2 py-1 text-center rounded-[15px]  bg-[#FA8282] mr-3'>Location </span> {bill.location}</p>
                                 <p>{bill.date}</p>
                                 <div className="card-actions justify-end">
-                                    <Link to={`/billDetails/${bill._id}`} className='btn text-white bg-[#FA8282] hover:bg-[#FF3636]'>See Details</Link>
+                                    <Link to={`/billDetails/${bill._id}`} className='btn btn-neutral mt-4'>See Details</Link>
                                 </div>
                             </div>
                         </div>)
