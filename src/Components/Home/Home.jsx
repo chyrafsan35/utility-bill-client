@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import RecentBills from '../RecentBills/RecentBills';
 import Banner from '../Banner/Banner';
+import Category from '../Category/Category';
 
 const Home = () => {
     const [recentBills, setRecentBills] = useState([]);
@@ -15,7 +16,12 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <div className='max-w-[1440px] mx-auto'>
+            
+            <div className='max-w-[1440px] mx-auto px-5 py-10'>
+                <Category></Category>
+            </div>
+
+            <div className='max-w-[1440px] mx-auto px-5 py-10'>
                 <RecentBills recentBills={recentBills}></RecentBills>
             </div>
         </div>
