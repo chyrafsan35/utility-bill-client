@@ -1,6 +1,7 @@
 import React, { use, useContext } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
+import logo from '../../assets/utility_logo.png'
 
 const NavBar = () => {
     const links = <>
@@ -31,7 +32,7 @@ const NavBar = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-base-100 shadow-sm z-50 relative">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -43,7 +44,7 @@ const NavBar = () => {
                         {links} {conditionalLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Utility Bill</a>
+                <a className="btn btn-ghost text-xl">Utility Bill</a><img className='max-w-[40px]' src={logo} alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

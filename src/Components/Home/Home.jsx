@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import RecentBills from '../RecentBills/RecentBills';
+import Banner from '../Banner/Banner';
 
 const Home = () => {
     const [recentBills, setRecentBills] = useState([]);
@@ -13,7 +14,7 @@ const Home = () => {
 
     return (
         <div>
-            <p>Home</p>
+            <Banner></Banner>
             <div className='max-w-[1440px] mx-auto'>
                 <RecentBills recentBills={recentBills}></RecentBills>
             </div>
