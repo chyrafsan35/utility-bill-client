@@ -1,16 +1,46 @@
-# React + Vite
+# Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This website helps management of monthly bills containing electricity, gas, water, internet, rent etc. Bills are stored for individual users and bill reports can be downloaded in a table format.  
 
-Currently, two official plugins are available:
+<div align="center" style="display: flex; overflow-x: auto; gap: 10px;">
+  <img src="https://i.ibb.co.com/v2t3nNJ/Screenshot-2026-01-01-184350.png" />
+  <img src="https://i.ibb.co.com/Z6DbX3hy/Screenshot-2026-01-01-184435.png" />
+</div>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
 
-## React Compiler
+<ul>
+  <li>React</li>
+  <li>Node js</li>
+  <li>Javascript</li>
+  <li>Tailwind CSS</li>
+  <li>Daisy UI</li>
+  <li>React router</li>
+  <li>Mongodb (Database)</li>
+</ul>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Core Features
 
-## Expanding the ESLint configuration
+<ul>
+  <li><b>Presentation :</b> The bills are presented in a aligned grid layout. Bills are sorted in order of types.</li>
+  <li><b>Payment :</b> It's payment method is also one of the core features of this website. </li>
+</ul>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Dependencies 
+<ul>
+  <li>Tailwind CSS</li>
+  <li>React</li>
+  <li>Firebase</li>
+  <li>React Icons</li>
+  <li>SweetAlert</li>
+  <li>Swiper</li>
+</ul>
+
+## Steps To Run The Project 
+1. Go to the live link
+2. In the home page, craete an account if entered as a new user
+3. Pay for bills
+4. Bill information will be stored in users account
+
+## Resources
+Live link : <a href="https://garments-gamma.vercel.app/" target="_blank">https://garments-gamma.vercel.app/</a>
