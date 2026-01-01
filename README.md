@@ -43,4 +43,4 @@ This website helps management of monthly bills containing electricity, gas, wate
 4. Bill information will be stored in users account
 
 ## Resources
-Live link : <a href="https://garments-gamma.vercel.app/" target="_blank">https://garments-gamma.vercel.app/</a>
+Live link : <a href="https://utility-bill-client.vercel.app/" target="_blank">https://utility-bill-client.vercel.app/</a>
