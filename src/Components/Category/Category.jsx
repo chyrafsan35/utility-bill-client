@@ -66,14 +66,14 @@ const Category = () => {
     ];
 
     return (
-        <div className="max-w-[1440px] mx-auto pt-13">
+        <div className="max-w-[1440px] mx-auto pt-15">
             <h2 className="text-center text-xl font-semibold mb-8">Service Categories</h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 ">
                 {categories.map((cat) => (
                     <div
                         key={cat.id}
-                        className={`p-3 rounded-xl shadow-sm bg-white text-center hover:scale-105 transform transition`}
+                        className={`p-3 rounded-xl shadow-sm bg-white text-center hover:scale-105 transform transition max-w-86 mx-auto`}
                     >
                         <div>
                             <div
@@ -81,7 +81,7 @@ const Category = () => {
                                 data-tooltip-content={cat.tooltip}
                                 data-tooltip-place="top"
                                 className="flex justify-center mb-2 mt-2 border rounded-[100%] w-[30px] h-[30px] text-center mx-auto items-center bg-white">{cat.icon}</div>
-                            <h3 className="text-xl font-semibold mb-2">{cat.name}</h3>
+                            <h3 className="text-sm font-semibold mb-2">{cat.name}</h3>
                         </div>
                         <p className="text-sm text-gray-800">{cat.description}</p>
                     </div>

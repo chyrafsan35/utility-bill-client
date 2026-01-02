@@ -1,7 +1,6 @@
 import React, { use, useRef } from 'react';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
-import tree from '../../assets/tree-branch.png';
 import Swal from 'sweetalert2';
 
 const BillDetails = () => {
@@ -63,8 +62,7 @@ const BillDetails = () => {
     }
 
     return (
-        <div className=' bg-gradient-to-r from-[#CC86F0] to-[#8C1AC9] relative overflow-hidden'>
-            <img className='max-w-[300px] md:max-w-[500px] absolute right-0 top-[-150px]' src={tree} alt="" />
+        <div className=''>
             <div className='flex flex-col md:flex-row gap-3 max-w-[1440px] mx-auto px-5 md:px-15 py-10'>
                 <div className=' bg-white rounded-sm px-3 py-10 mx-auto'>
                     <div className="card bg-base-100 w-96 shadow-sm mx-auto">
@@ -98,7 +96,7 @@ const BillDetails = () => {
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Email</label>
-                            <input name="email" type="email" readOnly defaultValue={user.email}
+                            <input name="email" type="email" readOnly defaultValue={user?.email || ''}
                                 class="mt-1 block w-full rounded-md border-gray-200 shadow-sm bg-gray-100 focus:ring focus:ring-indigo-200 p-2"
                             />
                         </div>

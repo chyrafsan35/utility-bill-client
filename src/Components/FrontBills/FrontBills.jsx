@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
 import '../../App.css'
+import { BiCategory } from "react-icons/bi";
+import { CiLocationOn } from "react-icons/ci";
 
 const FrontBills = ({bill}) => {
     const {_id,title, category, location, date} = bill;
     return (
-        <div className="card bg-base-100 w-86 shadow-sm mx-auto px-0">
+        <div className="card bg-base-100 w-86 shadow-sm mx-auto px-0 text-sm">
             <div className="card-body">
-                <h2 className="card-title">{title}</h2>
-                <p><span className='px-2 py-1 text-center rounded-[15px] text-white  bg-black mr-3'>Category </span> {category}</p>
-                <p><span className='px-2 py-1 text-center rounded-[15px] text-white  bg-black mr-3'>Location </span> {location}</p>
+                <h2 className="card-title text-center text-sm">{title}</h2>
+                <p className='flex items-center gap-1'> <BiCategory />  {category}</p>
+                <p className='flex items-center gap-1'> <CiLocationOn />  {location}</p>
                 <p>{date}</p>
                 <div className="card-actions justify-end">
                     <Link to={`/billDetails/${_id}`} className='btn btn-neutral mt-4'>See Details</Link>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RecentBills from '../RecentBills/RecentBills';
 import Banner from '../Banner/Banner';
 import Category from '../Category/Category';
-import tree from '../../assets/tree-branch.png';
+import CustomerReviews from '../CustomerReviews/CustomerReviews';
 
 const Home = () => {
     const [recentBills, setRecentBills] = useState([]);
@@ -24,6 +24,10 @@ const Home = () => {
 
             <div>
                 <RecentBills recentBills={recentBills}></RecentBills>
+            </div>
+
+            <div>
+                <CustomerReviews></CustomerReviews>
             </div>
         </div>
     );

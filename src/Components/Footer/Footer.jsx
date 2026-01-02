@@ -26,7 +26,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="text-center">
-                <p>Copyright © {new Date().getFullYear()} - All rights reserved by ACME Industries Ltd</p>
+                <p>Copyright © {new Date().getFullYear()} - All rights reserved by Utility Bill</p>
             </div>
         </footer>
     );
