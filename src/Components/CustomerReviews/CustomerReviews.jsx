@@ -17,7 +17,7 @@ const CustomerReviews = () => {
     }, [])
 
     return (
-        <div className='pt-15 text-[#1A1A1A]'>
+        <div className='max-w-[1440px] mx-auto pt-15 text-[#1A1A1A]'>
             <div className="text-center mb-8">
                 <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
                     Customer Feedbacks
