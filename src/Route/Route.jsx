@@ -8,6 +8,10 @@ import MyPayBills from '../Components/MyPayBills/MyPayBills';
 import BillDetails from '../Components/BillDetails/BillDetails';
 import PrivateRoute from './PrivateRoute';
 import NotFound from '../Components/NotFound/NotFound';
+import AboutUs from '../Components/AboutUs/AboutUs';
+import Contact from '../Components/Contact/Contact';
+import Help from '../Components/Help/Help';
+import Feedback from '../Components/Feedback/Feedback';
 ;
 
 const router = createBrowserRouter([
@@ -22,6 +26,22 @@ const router = createBrowserRouter([
         {
             path : '/bills',
             Component : Bills
+        },
+        {
+            path : '/about-us',
+            Component : AboutUs
+        },
+        {
+            path : '/contact',
+            Component : Contact
+        },
+        {
+            path : '/help',
+            Component : Help
+        },
+        {
+            path : '/feedback',
+            Component : Feedback
         },
         {
             path : '/login',

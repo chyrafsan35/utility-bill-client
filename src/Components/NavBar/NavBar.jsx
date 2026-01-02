@@ -7,6 +7,10 @@ const NavBar = () => {
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/bills'}>Bills</NavLink></li>
+        <li><NavLink to={'/about-us'}>About Us</NavLink></li>
+        <li><NavLink to={'/contact'}>Contact</NavLink></li>
+        <li><NavLink to={'/help'}>Help</NavLink></li>
+        <li><NavLink to={'/feedback'}>Feedback</NavLink></li>
     </>
 
     const { user, signOutUser } = use(AuthContext);
@@ -32,7 +36,7 @@ const NavBar = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100 shadow-sm z-50 relative">
+        <div className="navbar max-w-[1440px] mx-auto border-x-0 bg-base-100 z-50 relative">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -53,7 +57,7 @@ const NavBar = () => {
 
             </div>
             <div className="navbar-end">
-
+                <input type="checkbox" value="synthwave" className="toggle theme-controller" />
             </div>
         </div>
     );
