@@ -67,7 +67,14 @@ const Category = () => {
 
     return (
         <div className="max-w-[1440px] mx-auto pt-15">
-            <h2 className="text-center text-xl font-semibold mb-8">Service Categories</h2>
+            <div className="text-center mb-8">
+                <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
+                    Service Categories
+                </h2>
+                <p className="text-gray-500 mt-2">
+                    All service categories 
+                </p>
+            </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 ">
                 {categories.map((cat) => (

@@ -3,6 +3,7 @@ import RecentBills from '../RecentBills/RecentBills';
 import Banner from '../Banner/Banner';
 import Category from '../Category/Category';
 import CustomerReviews from '../CustomerReviews/CustomerReviews';
+import Stats from '../Stats/Stats';
 
 const Home = () => {
     const [recentBills, setRecentBills] = useState([]);
@@ -24,6 +25,10 @@ const Home = () => {
 
             <div>
                 <RecentBills recentBills={recentBills}></RecentBills>
+            </div>
+
+            <div>
+                <Stats></Stats>
             </div>
 
             <div>

@@ -10,15 +10,22 @@ const CustomerReviews = () => {
 
     const [review, setReviews] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         const reviews = fetch('https://utility-api-server.vercel.app/reviews')
-        .then(res=>res.json())
-        .then(data=>setReviews(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [])
 
     return (
         <div className='pt-15 text-[#1A1A1A]'>
-            <h2 className='text-center mb-8 font-semibold text-xl'>Customer Feedbacks</h2>
+            <div className="text-center mb-8">
+                <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
+                    Customer Feedbacks
+                </h2>
+                <p className="text-gray-500 mt-2">
+                    Active users rated feedbacks
+                </p>
+            </div>
             <>
                 <Swiper
 
@@ -53,6 +60,8 @@ const CustomerReviews = () => {
                 </Swiper>
 
             </>
+            {/* Divider */}
+            <div className="mt-30 border-t border-gray-100"></div>
         </div>
     );
 };
