@@ -7,10 +7,6 @@ const NavBar = () => {
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/bills'}>Bills</NavLink></li>
-        <li><NavLink to={'/about-us'}>About Us</NavLink></li>
-        <li><NavLink to={'/contact'}>Contact</NavLink></li>
-        <li><NavLink to={'/help'}>Help</NavLink></li>
-        <li><NavLink to={'/feedback'}>Feedback</NavLink></li>
     </>
 
     const { user, signOutUser } = use(AuthContext);
@@ -26,12 +22,22 @@ const NavBar = () => {
 
     const conditionalLinks = <>
         {
-            user ? <><li><NavLink to={'/myPayBills'}>My Pay Bills</NavLink></li>
-                <li><img className='max-w-10 max-h-10 mr-3 rounded-full' src={`${user.photoURL}`} alt="" /></li>
-                <li><button onClick={handleSignOut} className='btn btn-neutral'>Logout</button></li>
-                </> 
+            user ?
+                <>
+                    <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
+                    <li><NavLink to={'/feedback'}>Feedback</NavLink></li>
+                    <li><NavLink to={'/help'}>Help</NavLink></li>
+                    <li><button onClick={handleSignOut} className='btn px-4 py-2 rounded-sm bg-primary text-white text-sm font-medium hover:bg-primary/70 transition'>Logout</button></li>
+                </>
                 :
-                <> <li><NavLink to={'/login'}>Login</NavLink></li> <li><NavLink to={'/register'}>Register</NavLink></li></>
+                <>
+                    <li><NavLink to={'/about-us'}>About Us</NavLink></li>
+                    <li><NavLink to={'/contact'}>Contact</NavLink></li>
+                    <li><NavLink to={'/help'}>Help</NavLink></li>
+                    <li><NavLink to={'/feedback'}>Feedback</NavLink></li>
+                    <li><NavLink to={'/login'}>Login</NavLink></li>
+                    <li><NavLink to={'/register'}>Register</NavLink></li>
+                </>
         }
     </>
 
@@ -48,7 +54,7 @@ const NavBar = () => {
                         {links} {conditionalLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl hidden md:block">Utility Bill</a><img className='max-w-[40px]' src={logo} alt="" />
+                <a className="btn btn-ghost text-xl hidden md:block">Utility Bill</a><img className='max-w-10' src={logo} alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -56,8 +62,18 @@ const NavBar = () => {
                 </ul>
 
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end gap-3">
                 <input type="checkbox" value="synthwave" className="toggle theme-controller" />
+                {
+                    user && (
+                        <img
+                            className="w-10 h-10 mr-3 rounded-full object-cover border"
+                            src={user.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
+                            alt="User Avatar"
+                        />
+                    )
+                }
+
             </div>
         </div>
     );

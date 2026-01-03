@@ -1,5 +1,5 @@
 import React, { use, useRef } from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import Swal from 'sweetalert2';
 
@@ -16,7 +16,12 @@ const BillDetails = () => {
         billDate.getFullYear() === currentDate.getFullYear();
 
     const refModal = useRef();
+    const navigate = useNavigate();
+
     const handleModal = () => {
+        if (!user) {
+            return navigate('/login')
+        }
         refModal.current.showModal();
     }
 
@@ -115,8 +120,8 @@ const BillDetails = () => {
                                     onClick={handleModal}
                                     disabled={!isCurrentMonth}
                                     className={`w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-sm transition-all shadow-lg ${isCurrentMonth
-                                            ? 'bg-primary text-white hover:bg-primary/80 hover:shadow-green-200 cursor-pointer'
-                                            : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                        ? 'bg-primary text-white hover:bg-primary/80 hover:shadow-green-200 cursor-pointer'
+                                        : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                                         }`}
                                 >
                                     {isCurrentMonth ? "Pay Now" : "Paid"}

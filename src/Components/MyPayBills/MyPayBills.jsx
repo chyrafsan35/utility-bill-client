@@ -3,7 +3,6 @@ import { AuthContext } from '../../Context/AuthContext';
 import jsPDF from "jspdf";
 import autoTable from "jspdf-auTotable";
 import '../../App.css';
-import tree from '../../assets/tree-branch.png';
 import Swal from 'sweetalert2';
 
 const MyPayBills = () => {
@@ -113,48 +112,95 @@ const MyPayBills = () => {
 
 
     return (
-        <div className='bg-gradient-to-r from-[#8FC6FF] to-[#007BFF] relative overflow-hidden'>
-            <img className='max-w-[300px] md:max-w-[500px] absolute right-0 top-[-150px]' src={tree} alt="" />
-            <p className='common_p mt-10'> My Pay Bills : {bills.length}</p>
-            <div className="max-w-[1440px] mx-auto p-5">
-                <div className="overflow-x-auto">
-                    <table className=".com_text table table-auto min-w-full border border-gray-400 bg-base-100">
-                        <thead className="bg-gray-200">
-                            <tr className='.com_text'>
-                                <th className="p-2 text-left">SL No.</th>
-                                <th className="p-2 text-left">Username</th>
-                                <th className="p-2 text-left">Email</th>
-                                <th className="p-2 text-left">Amount</th>
-                                <th className="p-2 text-left">Address</th>
-                                <th className="p-2 text-left">Phone</th>
-                                <th className="p-2 text-left">Date</th>
-                                <th className="p-2 text-left">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {bills.map((info, index) => (
-                                <tr key={info._id} className="border-t">
-                                    <td className="p-2">{index + 1}</td>
-                                    <td className="p-2">{info.username}</td>
-                                    <td className="p-2">{info.email}</td>
-                                    <td className="p-2">{info.amount}</td>
-                                    <td className="p-2">{info.address}</td>
-                                    <td className="p-2">{info.phone}</td>
-                                    <td className="p-2">{info.date}</td>
-                                    <td className="p-2 space-x-2">
-                                        <button onClick={() => handleUpdate(info)} className="btn btn-neutral ">Update</button>
-                                        <button onClick={() => handleDelete(info._id)} className="btn btn-neutral ">Delete</button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <div className="mb-4 flex justify-between items-center mt-5">
+        <div className='max-w-[1440px] mx-auto'>
+            <div className="min-h-screen bg-[#f8fafc] py-10">
+                <div className="max-w-[1440px] mx-auto px-5">
+
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
                         <div>
-                            <span>Total Bills Paid: {bills.length}</span>
-                            <span className="ml-4">Total Amount: ৳{bills.reduce((sum, bill) => sum + Number(bill.amount), 0).toLocaleString()}</span>
+                            <h1 className="text-xl font-semibold text-gray-900 tracking-tight">My Paid Bills</h1>
+                            <p className="text-gray-500 mt-1 text-sm">You have successfully settled {bills.length} utility payments.</p>
                         </div>
-                        <button onClick={handleDownloadReport} className="btn border-none text-white bg-[#8FC6FF] hover:bg-[#007BFF]">Download Report</button>
+
+                        <div className="flex items-center gap-4">
+                            <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col min-w-[150px]">
+                                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Total Settled</span>
+                                <span className="text-xl font-black">
+                                    ৳{bills.reduce((sum, bill) => sum + Number(bill.amount), 0).toLocaleString()}
+                                </span>
+                            </div>
+                            <button
+                                onClick={handleDownloadReport}
+                                className="bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-100 flex items-center gap-2"
+                            >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                Download Report
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left border-collapse">
+                                <thead>
+                                    <tr className="bg-gray-50/50 border-b border-gray-100">
+                                        <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-wider text-center">SL</th>
+                                        <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-wider">Customer Info</th>
+                                        <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-wider text-center">Amount</th>
+                                        <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-wider">Contact & Address</th>
+                                        <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-wider">Payment Date</th>
+                                        <th className="px-6 py-4 text-[11px] font-bold text-gray-400 uppercase tracking-wider text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-gray-50">
+                                    {bills.map((info, index) => (
+                                        <tr key={info._id} className="hover:bg-blue-50/30 transition-colors group">
+                                            <td className="px-6 py-5 text-sm text-gray-400 text-center font-medium">
+                                                {String(index + 1).padStart(2, '0')}
+                                            </td>
+                                            <td className="px-6 py-5">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-10 h-10 rounded-full bg-blue-50 text-primary flex items-center justify-center font-bold text-xs">
+                                                        {info.username?.slice(0, 2).toUpperCase()}
+                                                    </div>
+                                                    <div>
+                                                        <p className="text-sm font-bold text-gray-900 leading-none">{info.username}</p>
+                                                        <p className="text-xs text-gray-400 mt-1">{info.email}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td className="px-6 py-5 text-center">
+                                                <span className="text-sm font-black text-gray-900">৳{info.amount}</span>
+                                                <span className="block text-[9px] font-bold text-green-500 uppercase mt-0.5">● Success</span>
+                                            </td>
+                                            <td className="px-6 py-5">
+                                                <p className="text-sm text-gray-600 font-medium">{info.phone}</p>
+                                                <p className="text-xs text-gray-400 truncate max-w-[150px]">{info.address}</p>
+                                            </td>
+                                            <td className="px-6 py-5">
+                                                <p className="text-sm text-gray-700 font-semibold">{info.date}</p>
+                                            </td>
+                                            <td className="px-6 py-5">
+                                                <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    <button
+                                                        onClick={() => handleUpdate(info)}
+                                                        className="p-2 hover:bg-white rounded-lg text-blue-600 shadow-sm border border-transparent hover:border-gray-100 transition-all"
+                                                    >
+                                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                                                    </button>
+                                                    <button
+                                                        onClick={() => handleDelete(info._id)}
+                                                        className="p-2 hover:bg-white rounded-lg text-red-500 shadow-sm border border-transparent hover:border-gray-100 transition-all"
+                                                    >
+                                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

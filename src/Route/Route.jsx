@@ -12,6 +12,9 @@ import AboutUs from '../Components/AboutUs/AboutUs';
 import Contact from '../Components/Contact/Contact';
 import Help from '../Components/Help/Help';
 import Feedback from '../Components/Feedback/Feedback';
+import DashboardLayout from '../layouts/DashboardLayout/DashboardLayout';
+import DashboardHome from '../layouts/Dashboard/DashboardHome';
+import Profile from '../layouts/Dashboard/Profile';
 ;
 
 const router = createBrowserRouter([
@@ -52,12 +55,6 @@ const router = createBrowserRouter([
             Component : Register
         },
         {
-            path : '/myPayBills',
-            element : <PrivateRoute>
-                <MyPayBills></MyPayBills>
-            </PrivateRoute>
-        },
-        {
             path : '/billDetails/:id',
             loader : ({params})=>fetch(`https://utility-api-server.vercel.app/bills/${params.id}`),
             element : 
@@ -67,6 +64,26 @@ const router = createBrowserRouter([
             path : '*',
             element : <NotFound></NotFound>
         }
+    ]
+  },
+  {
+    path: 'dashboard',
+    element: <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+    </PrivateRoute>,
+    children: [
+        {
+            index: true,
+            Component: DashboardHome
+        },
+        {
+            path: 'profile',
+            Component: Profile
+        },
+        {
+            path : 'myPayBills',
+            Component: MyPayBills,
+        },
     ]
   }
 ]);
