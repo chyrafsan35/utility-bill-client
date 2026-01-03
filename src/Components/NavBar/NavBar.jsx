@@ -56,7 +56,7 @@ const NavBar = () => {
                 </div>
                 <a className="btn btn-ghost text-xl hidden md:block">Utility Bill</a><img className='max-w-10' src={logo} alt="" />
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden lg:flex justify-center">
                 <ul className="menu menu-horizontal px-1">
                     {links} {conditionalLinks}
                 </ul>

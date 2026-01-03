@@ -4,15 +4,15 @@ import { AuthContext } from '../../Context/AuthContext';
 const Profile = () => {
     const { user } = use(AuthContext)
     return (
-        <div>
-            <div className='flex flex-col items-center'>
-                <div className='mb-8 text-center'>
-                    <p>{user.displayName}</p>
-                    <p>{user.email}</p>
+        <div className='p-4'>
+            <div className='flex flex-col md:flex-row gap-4 items-center'>
+                <img className='max-w-40 ring-0 rounded-full' src={user.photoURL} alt="" />
+                <div className='mb-8'>
+                    <p className='text-lg font-semibold'>{user.displayName}</p>
+                    <p className='text-sm text-gray-400'>{user.email}</p>
                 </div>
-                <img className='max-w-50 ring-0 rounded-full' src={user.photoURL} alt="" />
             </div>
-            <div>
+            <div className='pt-15'>
                 <p>User Status</p>
             </div>
         </div>
