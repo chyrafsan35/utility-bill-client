@@ -48,7 +48,7 @@ const NavBar = () => {
                         {links} {conditionalLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Utility Bill</a><img className='max-w-[40px]' src={logo} alt="" />
+                <a className="btn btn-ghost text-xl hidden md:block">Utility Bill</a><img className='max-w-[40px]' src={logo} alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

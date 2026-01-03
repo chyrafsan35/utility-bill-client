@@ -1,10 +1,21 @@
 @import "tailwindcss";
+
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
   themes: light --default;
- };
+}
 
- .roboto {
+;
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #6EE7B7;
+  --color-secondary: #28C7DB;
+  --color-text: #FFFFFF;
+}
+
+.roboto {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
 }
@@ -19,17 +30,17 @@
   font-optical-sizing: auto;
 }
 
- .common_p {
+.common_p {
   text-align: center;
   font-weight: 600;
   font-size: 24px;
   font-family: "Roboto", sans-serif;
- }
+}
 
- .com_text{
+.com_text {
   font-family: "Montserrat", sans-serif;
- }
+}
 
- .com_btn{
-      background-color: linear-gradient(to right, #6a11cb, #2575fc);
-  }
+.com_btn {
+  background-color: linear-gradient(to right, #6a11cb, #2575fc);
+}

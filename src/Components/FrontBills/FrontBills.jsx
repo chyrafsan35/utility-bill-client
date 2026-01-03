@@ -14,7 +14,7 @@ const FrontBills = ({bill}) => {
                 <p className='flex items-center gap-1'> <CiLocationOn />  {location}</p>
                 <p>{date}</p>
                 <div className="card-actions justify-end">
-                    <Link to={`/billDetails/${_id}`} className='btn btn-neutral mt-4'>See Details</Link>
+                    <Link to={`/billDetails/${_id}`} className='btn mt-4 px-4 py-2 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary/70 transition'>See Details</Link>
                 </div>
             </div>
         </div>

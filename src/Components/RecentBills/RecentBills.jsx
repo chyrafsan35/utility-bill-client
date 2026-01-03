@@ -7,7 +7,7 @@ const RecentBills = ({ recentBills }) => {
         <div className='max-w-[1440px] mx-auto pt-15'>
             <div className="text-center mb-8">
                 <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
-                    Recent Bills
+                    Featured Bills
                 </h2>
                 <p className="text-gray-500 mt-2">
                     Top featured bills paid by users
