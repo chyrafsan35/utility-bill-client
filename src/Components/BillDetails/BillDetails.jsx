@@ -63,30 +63,70 @@ const BillDetails = () => {
 
     return (
         <div className=''>
-            <div className='flex flex-col md:flex-row gap-3 max-w-[1440px] mx-auto px-5 md:px-15 py-10'>
-                <div className=' bg-white rounded-sm px-3 py-10 mx-auto'>
-                    <div className="card bg-base-100 w-96 shadow-sm mx-auto">
-                        <figure className='mx-auto'>
+            <div className='min-h-screen bg-gray-50 py-10 px-5'>
+                <div className='max-w-4xl mx-auto bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden'>
+
+                    <div className="p-8 border-b border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <h1 className="text-xl font-semibold text-gray-900 leading-tight">{title}</h1>
+                            <p className="text-gray-500 mt-1 flex items-center gap-2">
+                                <span className="p-1.5 bg-primary/20 text-primary rounded-md text-xs font-bold uppercase tracking-wider">{category}</span>
+                                • ID: {_id}
+                            </p>
+                        </div>
+                        <div className={`px-4 py-2 rounded-full font-bold text-sm ${isCurrentMonth ? 'bg-orange-50 text-orange-600' : 'bg-green-50 text-green-600'}`}>
+                            {isCurrentMonth ? "● Payment Pending" : "● Paid / No Action Required"}
+                        </div>
+                    </div>
+
+                    <div className='flex flex-col md:flex-row gap-8 p-8'>
+                        <div className='w-full md:w-1/3 flex justify-center items-center  rounded-xl p-10 border-dashed'>
                             <img
                                 src={image}
-                                alt={title} />
-                        </figure>
-                    </div>
-                    <div className="card-body">
-                        <h2 className="card-title">{title}</h2>
-                        <p>{description}</p>
-                        <span>{category}</span>
-                        <span>{location}</span>
-                        <span>{date}</span>
-                        <span>{amount}</span>
-                        <div className=" mt-3">
-                            <button onClick={handleModal} disabled={!isCurrentMonth} className="btn btn-neutral mt-4">Pay Bill</button>
+                                className="max-w-[120px] h-auto object-contain transition-transform hover:scale-110 duration-300"
+                                alt={title}
+                            />
+                        </div>
+
+                        <div className="flex-1 space-y-6">
+                            <div>
+                                <h3 className="text-sm font-bold text-gray-400 uppercase mb-2">Service Description</h3>
+                                <p className="text-gray-700 leading-relaxed text-sm">{description}</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                                <div className="bg-gray-50 p-4 rounded-xl">
+                                    <span className="block text-xs font-bold text-gray-400 uppercase">Location</span>
+                                    <span className="text-gray-900 font-semibold text-sm">{location}</span>
+                                </div>
+                                <div className="bg-gray-50 p-4 rounded-xl">
+                                    <span className="block text-xs font-bold text-gray-400 uppercase">Billing Date</span>
+                                    <span className="text-gray-900 font-semibold text-sm">{date}</span>
+                                </div>
+                            </div>
+
+                            <div className="pt-6 mt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                <div>
+                                    <span className="block text-xs font-bold text-gray-400 uppercase">Total Amount Due</span>
+                                    <span className="text-2xl font-black">৳ {amount || "0.00"}</span>
+                                </div>
+
+                                <button
+                                    onClick={handleModal}
+                                    disabled={!isCurrentMonth}
+                                    className={`w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-sm transition-all shadow-lg ${isCurrentMonth
+                                            ? 'bg-primary text-white hover:bg-primary/80 hover:shadow-green-200 cursor-pointer'
+                                            : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                        }`}
+                                >
+                                    {isCurrentMonth ? "Pay Now" : "Paid"}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Open the modal using document.getElementById('ID').showModal() method */}
 
             <dialog ref={refModal} className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
@@ -160,7 +200,7 @@ const BillDetails = () => {
 
                         <div class="pt-4">
                             <button type="submit"
-                                class="w-full inline-flex justify-center rounded-md btn btn-neutral mt-4 px-4 py-2  font-medium  disabled:opacity-60"
+                                class="w-full inline-flex justify-center rounded-md btn btn-primary text-white mt-4 px-4 py-2  font-medium  disabled:opacity-60"
                             >
                                 Pay Bill
                             </button>
@@ -171,7 +211,7 @@ const BillDetails = () => {
                     <div className="modal-action">
                         <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
-                            <button className="btn btn-neutral mt-4">Close</button>
+                            <button className="btn btn-primary text-white mt-4">Close</button>
                         </form>
                     </div>
                 </div>

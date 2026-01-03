@@ -28,16 +28,16 @@ const Bills = () => {
 
                                 <div>
                                     <div className='flex justify-between items-start mb-4'>
-                                        <div className='p-3 bg-primary rounded-xl group-hover:bg-primary/80 group-hover:text-white transition-colors'>
+                                        <div className='p-3 bg-primary/40 rounded-xl group-hover:bg-primary group-hover:text-white transition-colors'>
                                             <img className='w-8 h-8 object-contain filter grayscale group-hover:invert brightness-0 invert' src={bill.image} alt={bill.category} />
                                         </div>
                                         <span className="text-[10px] font-bold uppercase px-2 py-1 bg-green-50 text-green-600 rounded-md">Active</span>
                                     </div>
 
-                                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">{bill.category}</h3>
-                                    <h2 className="text-lg font-bold text-gray-800 mt-1 line-clamp-1">{bill.title}</h2>
+                                    <h3 className="text-xs text-gray-400 uppercase tracking-widest">{bill.category}</h3>
+                                    <h2 className="text-lg font-semibold text-gray-800 mt-1 line-clamp-1">{bill.title}</h2>
 
-                                    <p className='text-2xl font-black text-gray-900 mt-2 tracking-tight'>৳ 0.00</p>
+                                    <p className='text-xl font-black text-gray-900 mt-2 tracking-tight'>৳ {bill.amount}</p>
 
                                     <div className='mt-6 space-y-3 border-t border-gray-50 pt-4'>
                                         <p className='flex items-center gap-2 text-sm text-gray-600'>
