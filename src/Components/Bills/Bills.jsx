@@ -2,16 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { BiCategory, BiCalendarAlt } from "react-icons/bi";
 import { CiLocationOn } from "react-icons/ci";
+import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
+import { LuSearchX } from 'react-icons/lu';
 
 const Bills = () => {
     const [bills, setBills] = useState([]);
     const [totalBills, setTotalBills] = useState(0);
     const [totalPage, setTotalPage] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
+    const [sort, setSort] = useState("date");
+    const [order, setOrder] = useState("");
+    const [searchText, setSearchText] = useState("")
     const limit = 10;
 
+    const handleSelect = (e) => {
+        const sortText = e.target.value;
+        setSort(sortText.split('-')[0]);
+        setOrder(sortText.split('-')[1]);
+    }
+
+    const handleSearch = (e) => {
+        setSearchText(e.target.value);
+    }
+
     useEffect(() => {
-        fetch(`https://utility-api-server.vercel.app/bills?limit=${limit}&skip=${currentPage*limit}`)
+        fetch(`https://utility-api-server.vercel.app/bills?limit=${limit}&skip=${currentPage * limit}&sort=${sort}&order=${order}&search=${searchText}`)
             .then(res => res.json())
             .then(data => {
                 setBills(data.bills);
@@ -20,7 +35,7 @@ const Bills = () => {
                 setTotalPage(page)
             })
             .catch(err => console.error(err));
-    }, [currentPage]);
+    }, [currentPage, sort, order, searchText]);
 
     console.log(totalBills, totalPage)
 
@@ -48,8 +63,34 @@ const Bills = () => {
                     <p className="text-sm mt-2 text-gray-500">Manage your active services, monitor usage, and settle outstanding payments.</p>
                 </header>
 
+                <div className='flex mb-8 justify-between gap-3'>
+                    <label className="input input-primary">
+                        <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g
+                                strokeLinejoin="round"
+                                strokeLinecap="round"
+                                strokeWidth="2.5"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                            </g>
+                        </svg>
+                        <input onChange={handleSearch} type="search" required placeholder="Search" />
+                    </label>
+
+                    <select onClick={handleSelect} defaultValue="Sort by order" className="select select-primary">
+                        <option disabled={true}>Sort by order</option>
+                        <option value={'date-asc'}>Ascending by date</option>
+                        <option value={'date-desc'}>Descending by date</option>
+                        <option value={'amount-asc'}>Amount : Low-High</option>
+                        <option value={'amount-desc'}>Amount : High-Low</option>
+                    </select>
+                </div>
+
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3'>
-                    {
+                    {bills.length > 0 ?
                         bills.map(bill => (
                             <div key={bill._id} className="group bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 p-4 flex flex-col justify-between">
 
@@ -91,15 +132,43 @@ const Bills = () => {
                                 </div>
                             </div>
                         ))
+                        :
+                        (
+                            <div className='col-span-full py-20 text-center bg-gray-50 rounded-xl border-2 border-dashed border-gray-200'>
+                                <div className='flex flex-col items-center justify-center'>
+                                    <div className='w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4'>
+                                        <LuSearchX size={30} />
+                                    </div>
+                                    <h3 className='text-lg font-bold text-gray-800'>No Bills Found</h3>
+                                    <p className='text-gray-500 text-sm max-w-xs mx-auto'>
+                                        We couldn't find any bills matching "{searchText}". Please try a different keyword or check your spelling.
+                                    </p>
+                                    <button
+                                        onClick={() => setSearchText("")}
+                                        className='mt-6 text-primary font-bold hover:underline'
+                                    >
+                                        Clear Search
+                                    </button>
+                                </div>
+                            </div>
+                        )
                     }
                 </div>
                 <div className='flex justify-center flex-wrap gap-3 pt-15'>
                     {
+                        currentPage > 0 &&
+                        <button className='cursor-pointer' onClick={() => setCurrentPage(currentPage - 1)}><IoMdArrowDropleft /></button>
+                    }
+                    {
                         [...Array(totalPage).keys()].map(i => {
                             return (
-                                <button onClick={()=>setCurrentPage(i)} className='btn btn-primary text-white'>{i+1}</button>
+                                <button onClick={() => setCurrentPage(i)} className={`btn ${i === currentPage && 'btn-primary'}`}>{i + 1}</button>
                             )
                         })
+                    }
+                    {
+                        currentPage < totalPage - 1 &&
+                        <button className='cursor-pointer' onClick={() => setCurrentPage(currentPage + 1)}><IoMdArrowDropright /></button>
                     }
                 </div>
             </div>

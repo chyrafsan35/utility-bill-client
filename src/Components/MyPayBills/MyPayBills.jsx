@@ -1,7 +1,7 @@
 import React, { use, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import jsPDF from "jspdf";
-import autoTable from "jspdf-auTotable";
+import autoTable from "jspdf-autotable";
 import '../../App.css';
 import Swal from 'sweetalert2';
 

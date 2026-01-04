@@ -38,6 +38,7 @@ const BillDetails = () => {
         const phone = e.target.phone.value;
         const date = e.target.date.value;
         const additional = e.target.additional.value;
+        const billCat = category;
         console.log(additional)
 
         const addedBill = {
@@ -46,7 +47,8 @@ const BillDetails = () => {
             amount: amount,
             address: address,
             phone: phone,
-            date: date
+            date: date,
+            category: billCat
         }
 
         fetch('https://utility-api-server.vercel.app/usersBills', {
@@ -205,7 +207,7 @@ const BillDetails = () => {
                                 placeholder="Any extra details (notes, reference, etc.)"></textarea>
                         </div>
 
-                        <div class="pt-4">
+                        <div class="">
                             <button type="submit"
                                 class="w-full inline-flex justify-center rounded-md btn btn-primary text-white mt-4 px-4 py-2  font-medium  disabled:opacity-60"
                             >
@@ -215,9 +217,8 @@ const BillDetails = () => {
                         </div>
                     </form>
 
-                    <div className="modal-action">
+                    <div className="modal-action pt-4">
                         <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
                             <button className="btn btn-primary text-white mt-4">Close</button>
                         </form>
                     </div>
