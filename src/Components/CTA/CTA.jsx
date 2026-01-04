@@ -1,6 +1,7 @@
 import React from 'react';
 import bg1 from '../../assets/utility-bill-bg.png';
 import stack from '../../assets/stack-of-currency.png';
+import { Link } from 'react-router';
 
 const CTA = () => {
     return (
@@ -23,12 +24,12 @@ const CTA = () => {
                         </p>
 
                         <div className="mt-6 flex gap-4">
-                            <button className="bg-white text-primary border border-primary cursor-pointer px-6 py-3 rounded-lg font-medium hover:bg-white/90 transition">
+                            <Link to={'/register'} className="btn bg-white text-primary border border-primary cursor-pointer px-6 py-3 rounded-lg font-medium hover:bg-white/90 transition">
                                 Get Started
-                            </button>
-                            <button className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition">
+                            </Link>
+                            <Link to={'/about-us'} className="btn px-6 py-3 rounded-lg border border-gray-300 cursor-pointer text-gray-700 hover:bg-gray-100 transition">
                                 Learn More
-                            </button>
+                            </Link>
                         </div>
                     </div>
 

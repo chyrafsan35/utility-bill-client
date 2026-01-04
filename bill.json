@@ -1,0 +1,122 @@
+[
+    {
+        "title": "Voltage Fluctuation Causing Appliance Damage",
+        "category": "Electricity",
+        "email": "user4@gmail.com",
+        "location": "Savar, Dhaka",
+        "description": "Residents in the area are experiencing frequent voltage fluctuations throughout the day. These sudden power changes have caused damage to sensitive household appliances such as refrigerators and televisions. The issue has increased maintenance costs and safety concerns. Immediate inspection and corrective action are required to prevent further losses.",
+        "image": "https://i.ibb.co.com/bgnZRpwp/high-voltage.png",
+        "date": "2026-01-12",
+        "amount": 540
+    },
+    {
+        "title": "Prepaid Electricity Meter Recharge",
+        "category": "Electricity",
+        "email": "meteruser@gmail.com",
+        "location": "Demra, Dhaka",
+        "description": "This charge covers the recharge of a prepaid electricity meter for continued power supply. Regular recharging is necessary to avoid unexpected power cuts. The meter allows better control over electricity consumption. Timely recharge ensures uninterrupted daily activities at home.",
+        "image": "https://i.ibb.co.com/9kvJYSNV/electric-panel.png",
+        "date": "2026-02-02",
+        "amount": 1000
+    },
+    {
+        "title": "Water Meter Replacement Charge",
+        "category": "Water",
+        "email": "resident3@gmail.com",
+        "location": "Rampura, Dhaka",
+        "description": "The existing water meter was damaged and no longer provided accurate readings. This replacement charge covers the installation of a new functional meter. Proper measurement helps track water usage correctly. It also prevents billing discrepancies in future cycles.",
+        "image": "https://i.ibb.co.com/0RP5xTCW/water-meter.png",
+        "date": "2026-03-20",
+        "amount": 850
+    },
+    {
+        "title": "Water Tank Cleaning Service Fee",
+        "category": "Water",
+        "email": "housing@gmail.com",
+        "location": "Moghbazar, Dhaka",
+        "description": "This service fee includes thorough cleaning and disinfection of the residential water storage tank. Regular tank cleaning helps maintain water quality and hygiene. It reduces the risk of contamination and waterborne diseases. The service is performed using approved cleaning methods.",
+        "image": "https://i.ibb.co.com/tPWbqP8W/tank.png",
+        "date": "2026-04-18",
+        "amount": 1200
+    },
+    {
+        "title": "Gas Connection Transfer Fee",
+        "category": "Gas",
+        "email": "tenant2@gmail.com",
+        "location": "Narayanganj",
+        "description": "This fee applies to the transfer of an existing gas connection during relocation. It covers administrative processing and technical adjustments. The transfer ensures uninterrupted gas service at the new residence. Safety checks are also included as part of the process.",
+        "image": "https://i.ibb.co.com/FbG5gJYL/gas-pipe.png",
+        "date": "2026-05-27",
+        "amount": 1500
+    },
+    {
+        "title": "Gas Burner Replacement Cost",
+        "category": "Gas",
+        "email": "kitchen@gmail.com",
+        "location": "Lalbagh, Dhaka",
+        "description": "The gas burner was damaged due to long-term usage and required replacement. This cost includes a new burner and installation service. A properly functioning burner ensures safe and efficient cooking. Replacement helps reduce gas leakage risks in the kitchen.",
+        "image": "https://i.ibb.co.com/W4T0Mb78/cooking.png",
+        "date": "2026-06-09",
+        "amount": 650
+    },
+    {
+        "title": "Fiber Optic Installation Fee",
+        "category": "Internet",
+        "email": "newuser@gmail.com",
+        "location": "Purbachal, Dhaka",
+        "description": "This one-time fee covers the installation of a new fiber optic internet connection. Fiber technology provides faster and more stable internet speeds. The service includes cable setup and basic configuration. It ensures reliable connectivity for work and entertainment.",
+        "image": "https://i.ibb.co.com/F4ZR9n0x/traffic-data.png",
+        "date": "2026-07-01",
+        "amount": 2500
+    },
+    {
+        "title": "Router Replacement and Setup Charge",
+        "category": "Internet",
+        "email": "techuser@gmail.com",
+        "location": "Kafrul, Dhaka",
+        "description": "This charge applies to replacing an outdated internet router with a new model. It includes proper setup and network configuration. A new router improves signal strength and connection stability. The service helps ensure optimal internet performance at home.",
+        "image": "https://i.ibb.co.com/tp9zGZgm/router.png",
+        "date": "2026-08-22",
+        "amount": 1800
+    },
+    {
+        "title": "Advance House Rent Deposit",
+        "category": "Rent",
+        "email": "newtenant@gmail.com",
+        "location": "Kalabagan, Dhaka",
+        "description": "This amount represents the advance security deposit required during a new rental agreement. The deposit ensures compliance with rental terms. It may be adjusted against future dues or refunded at the end of tenancy. The payment secures the rental property.",
+        "image": "https://i.ibb.co.com/FkCyBbFm/bank-deposit.png",
+        "date": "2026-09-03",
+        "amount": 30000
+    },
+    {
+        "title": "Late Rent Payment Penalty",
+        "category": "Rent",
+        "email": "tenantlate@gmail.com",
+        "location": "Banasree, Dhaka",
+        "description": "This penalty was applied due to delayed payment of the monthly house rent. Late payments affect property management schedules. The charge encourages timely rent submission. Regular delays may result in additional penalties as per agreement.",
+        "image": "https://i.ibb.co.com/Rk9mNBZQ/penalties.png",
+        "date": "2026-10-06",
+        "amount": 1200
+    },
+    {
+        "title": "Community Generator Backup Contribution",
+        "category": "Electricity",
+        "email": "committee@gmail.com",
+        "location": "Old Dhaka",
+        "description": "This contribution is collected for operating and maintaining a community backup generator. The generator provides electricity during power outages. The fee covers fuel, servicing, and minor repairs. It ensures uninterrupted power for essential needs.",
+        "image": "https://i.ibb.co.com/Fk78qdy0/electric-generator.png",
+        "date": "2026-11-08",
+        "amount": 900
+    },
+    {
+        "title": "Rainwater Drainage Cleaning Fee",
+        "category": "Water",
+        "email": "local@gmail.com",
+        "location": "Tejgaon, Dhaka",
+        "description": "This service fee covers cleaning of blocked rainwater drainage systems. Regular maintenance helps prevent waterlogging during heavy rainfall. The cleaning improves water flow and reduces flooding risks. It is especially important before the monsoon season.",
+        "image": "https://i.ibb.co.com/chzPBFHk/sewer.png",
+        "date": "2026-12-28",
+        "amount": 700
+    }
+]

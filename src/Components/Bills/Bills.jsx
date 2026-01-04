@@ -1,17 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router'; 
+import { Link } from 'react-router';
 import { BiCategory, BiCalendarAlt } from "react-icons/bi";
 import { CiLocationOn } from "react-icons/ci";
 
 const Bills = () => {
     const [bills, setBills] = useState([]);
+    const [totalBills, setTotalBills] = useState(0);
+    const [totalPage, setTotalPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
+    const limit = 10;
 
     useEffect(() => {
-        fetch('https://utility-api-server.vercel.app/bills')
+        fetch(`https://utility-api-server.vercel.app/bills?limit=${limit}&skip=${currentPage*limit}`)
             .then(res => res.json())
-            .then(data => setBills(data))
+            .then(data => {
+                setBills(data.bills);
+                setTotalBills(data.total)
+                const page = Math.ceil(data.total / limit)
+                setTotalPage(page)
+            })
             .catch(err => console.error(err));
-    }, []);
+    }, [currentPage]);
+
+    console.log(totalBills, totalPage)
+
+    const billTag = (billInfo) => {
+        const now = new Date();
+        const bill = new Date(billInfo.date);
+        if (
+            bill.getMonth() === now.getMonth() &&
+            bill.getFullYear() === now.getFullYear()
+        ) {
+            return "Active";
+        }
+
+        if (bill > now) {
+            return "Upcoming"
+        }
+        return "Due"
+    };
 
     return (
         <div className='min-h-screen'>
@@ -31,7 +58,12 @@ const Bills = () => {
                                         <div className='p-3 bg-primary/40 rounded-xl group-hover:bg-primary group-hover:text-white transition-colors'>
                                             <img className='w-8 h-8 object-contain filter grayscale group-hover:invert brightness-0 invert' src={bill.image} alt={bill.category} />
                                         </div>
-                                        <span className="text-[10px] font-bold uppercase px-2 py-1 bg-green-50 text-green-600 rounded-md">Active</span>
+                                        <span className={`text-[10px] font-bold uppercase px-2 py-1 rounded-md 
+                                                ${billTag(bill) === 'Active' ? 'text-primary bg-primary/30' :
+                                                billTag(bill) === 'Upcoming' ? 'text-yellow-500 bg-yellow-500/30' :
+                                                    'text-red-600 bg-red-600/30'
+                                            }
+                                            `}>{billTag(bill)}</span>
                                     </div>
 
                                     <h3 className="text-xs text-gray-400 uppercase tracking-widest">{bill.category}</h3>
@@ -59,6 +91,15 @@ const Bills = () => {
                                 </div>
                             </div>
                         ))
+                    }
+                </div>
+                <div className='flex justify-center flex-wrap gap-3 pt-15'>
+                    {
+                        [...Array(totalPage).keys()].map(i => {
+                            return (
+                                <button onClick={()=>setCurrentPage(i)} className='btn btn-primary text-white'>{i+1}</button>
+                            )
+                        })
                     }
                 </div>
             </div>
