@@ -20,14 +20,12 @@ const DashboardHome = () => {
         }
     }, [user.email]);
 
-    // ডাটা প্রসেসিং
     const charData = billData.map(bill => ({
         date: bill.date,
         amount: Number(bill.amount),
         category: bill.category
     }));
 
-    // ক্যালকুলেশন (Stats Cards এর জন্য)
     const totalSpent = charData.reduce((sum, item) => sum + item.amount, 0);
     const totalBills = charData.length;
 
