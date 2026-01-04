@@ -1,9 +1,11 @@
 import React, { use, useRef } from 'react';
-import { useLoaderData, useNavigate } from 'react-router';
+import { useLoaderData, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import Swal from 'sweetalert2';
 
 const BillDetails = () => {
+    const pageLocation = useLocation();
+    console.log(pageLocation.state);
     const detailedBill = useLoaderData();
     console.log(detailedBill)
     const { _id, title, category, location, description, image, amount, date } = detailedBill;

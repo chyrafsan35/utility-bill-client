@@ -26,7 +26,7 @@ const NavBar = () => {
                 <>
                     <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
                     <li><NavLink to={'/feedback'}>Feedback</NavLink></li>
-                    <li><NavLink to={'/help'}>Help</NavLink></li>
+                    <li><NavLink to={'/contact'}>Contact</NavLink></li>
                     <li><button onClick={handleSignOut} className='btn px-4 py-2 rounded-sm bg-primary text-white text-sm font-medium hover:bg-primary/70 transition'>Logout</button></li>
                 </>
                 :

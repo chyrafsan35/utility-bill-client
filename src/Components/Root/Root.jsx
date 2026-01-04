@@ -8,7 +8,7 @@ const Root = () => {
     return (
         <div>
             <NavBar></NavBar>
-            <div className='bg-[#F7F7F7]'>
+            <div className='bg-[#fefdfd]'>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>
