@@ -34,7 +34,6 @@ const NavBar = () => {
                     <li><NavLink to={'/about-us'}>About Us</NavLink></li>
                     <li><NavLink to={'/contact'}>Contact</NavLink></li>
                     <li><NavLink to={'/help'}>Help</NavLink></li>
-                    <li><NavLink to={'/feedback'}>Feedback</NavLink></li>
                     <li><NavLink to={'/login'}>Login</NavLink></li>
                     <li><NavLink to={'/register'}>Register</NavLink></li>
                 </>
