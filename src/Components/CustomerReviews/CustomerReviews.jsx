@@ -11,7 +11,7 @@ const CustomerReviews = () => {
     const [review, setReviews] = useState([]);
 
     useEffect(() => {
-            fetch('https://utility-api-server.vercel.app/reviews')
+        fetch('https://utility-api-server.vercel.app/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
@@ -28,12 +28,11 @@ const CustomerReviews = () => {
             </div>
             <>
                 <Swiper
-
                     loop={true}
                     effect={'coverflow'}
                     grabCursor={true}
                     centeredSlides={true}
-                    slidesPerView={4}
+
                     coverflowEffect={{
                         rotate: 30,
                         stretch: '25%',
@@ -42,11 +41,37 @@ const CustomerReviews = () => {
                         scale: 0.75,
                         slideShadows: true,
                     }}
+
                     autoplay={{
                         delay: 2500,
                         disableOnInteraction: false,
                     }}
-                    pagination={true}
+
+                    pagination={{ clickable: true }}
+
+                    breakpoints={{
+                        0: {
+                            slidesPerView: 1,
+                            spaceBetween: 5,
+                        },
+                        640: {
+                            slidesPerView: 1.5,
+                            spaceBetween: 10,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 15,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 20,
+                        },
+                        1280: {
+                            slidesPerView: 4,
+                            spaceBetween: 25,
+                        },
+                    }}
+
                     modules={[EffectCoverflow, Pagination, Autoplay]}
                     className="mySwiper"
                 >

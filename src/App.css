@@ -11,7 +11,16 @@
   name: "light";
   default: true;
   --color-primary: #6EE7B7;
-  --color-secondary: #e1edfc;
+  --color-secondary: #A3D0F7;
+  /* --color-secondary: #B2D7F7; */
+  /* --color-secondary: #e1edfc; */
+  --color-text: #FFFFFF;
+}
+
+@plugin "daisyui/theme" {
+  name: "swap";
+  --color-primary: #A3D0F7;   
+  --color-secondary: #6EE7B7;
   --color-text: #FFFFFF;
 }
 

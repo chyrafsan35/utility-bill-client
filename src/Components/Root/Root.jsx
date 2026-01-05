@@ -5,8 +5,9 @@ import Footer from '../Footer/Footer';
 import { ToastContainer } from 'react-toastify';
 
 const Root = () => {
+
     return (
-        <div>
+        <div className='data-theme={theme}'>
             <NavBar></NavBar>
             <div className='bg-[#fefdfd]'>
                 <Outlet></Outlet>

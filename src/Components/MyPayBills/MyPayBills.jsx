@@ -113,7 +113,7 @@ const MyPayBills = () => {
 
     return (
         <div className='max-w-[1440px] mx-auto'>
-            <div className="min-h-screen bg-[#f8fafc] py-10">
+            <div className="min-h-screen  py-10">
                 <div className="max-w-[1440px] mx-auto px-5">
 
                     <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">

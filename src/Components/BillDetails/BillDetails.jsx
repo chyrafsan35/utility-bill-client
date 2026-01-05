@@ -83,7 +83,7 @@ const BillDetails = () => {
                                 • ID: {_id}
                             </p>
                         </div>
-                        <div className={`px-4 py-2 rounded-full font-bold text-sm ${isCurrentMonth ? 'bg-orange-50 text-orange-600' : 'bg-green-50 text-green-600'}`}>
+                        <div className={`px-4 py-2 rounded-full font-bold text-sm ${isCurrentMonth ? 'bg-orange-50 text-orange-600' : 'bg-primary/30 text-primary'}`}>
                             {isCurrentMonth ? "● Payment Pending" : "● Paid / No Action Required"}
                         </div>
                     </div>

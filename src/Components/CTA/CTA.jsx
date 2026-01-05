@@ -1,5 +1,6 @@
 import React from 'react';
 import bg1 from '../../assets/utility-bill-bg.png';
+import bg2 from '../../assets/utility-bill-bg3.png';
 import stack from '../../assets/stack-of-currency.png';
 import { Link } from 'react-router';
 

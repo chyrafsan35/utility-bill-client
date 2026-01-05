@@ -72,7 +72,6 @@ const Feedback = () => {
                                 <textarea
                                     name="feedback"
                                     rows={4}
-                                    placeholder='Comments...'
                                     className="w-full p-3 text-sm  bg-gray-50 border border-transparent focus:border-primary focus:bg-white rounded-xl outline-none transition-all resize-none"
                                     required
                                 ></textarea>

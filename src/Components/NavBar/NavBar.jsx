@@ -1,4 +1,4 @@
-import React, { use, useContext } from 'react';
+import React, { use, useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import logo from '../../assets/utility_logo.png'
@@ -10,9 +10,32 @@ const NavBar = () => {
     </>
 
     const { user, signOutUser } = use(AuthContext);
+    const [userData, setUserData] = useState();
+
+    const [theme, setTheme] = useState(
+        localStorage.getItem("theme") || "light"
+    );
+
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+    }, [theme]);
+
+    const handleThemeToggle = (e) => {
+        setTheme(e.target.checked ? "swap" : "light");
+    };
+
     console.log('Here is the current user', user)
     const context = useContext(AuthContext);
     console.log("Full context from NavBar:", context);
+
+    useEffect(() => {
+        if (!user?.email) return;
+
+        fetch(`https://utility-api-server.vercel.app/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setUserData(data))
+    }, [user?.email])
 
     const handleSignOut = () => {
         signOutUser()
@@ -62,12 +85,17 @@ const NavBar = () => {
 
             </div>
             <div className="navbar-end gap-3">
-                <input type="checkbox" value="synthwave" className="toggle theme-controller" />
+                <input
+                    type="checkbox"
+                    className="toggle theme-controller"
+                    checked={theme === "swap"}
+                    onClick={handleThemeToggle}
+                />
                 {
                     user && (
                         <img
                             className="w-10 h-10 mr-3 rounded-full object-cover border"
-                            src={user.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
+                            src={userData?.image || "https://i.ibb.co/4pDNDk1/avatar.png"}
                             alt="User Avatar"
                         />
                     )

@@ -73,10 +73,10 @@ const Profile = () => {
                             src={userData?.image || 'https://ibb.co.com/TqYhcmN8'}
                             alt="Profile"
                         />
-                        <div className="absolute bottom-2 right-2 w-6 h-6 bg-emerald-500 border-4 border-white rounded-full"></div>
+                        <div className="absolute bottom-2 right-2 w-6 h-6 bg-primary/80 border-4 border-white rounded-full"></div>
                     </div>
                     <h2 className="mt-6 text-xl font-bold text-gray-800">{userData?.name}</h2>
-                    <p className="text-emerald-600 text-sm font-medium bg-emerald-50 px-3 py-1 rounded-full mt-2">Verified Member</p>
+                    <p className="text-primary text-sm font-medium bg-primary/30 px-3 py-1 rounded-full mt-2">Verified Member</p>
                     <div className='flex flex-col items-center gap-3 pt-8'>
                         <button onClick={handleEditProfile} className='btn btn-primary text-white'>Update Profile</button>
                         <button onClick={handleLogOut} className='btn border-2 border-primary'>Log Out</button>
@@ -87,7 +87,7 @@ const Profile = () => {
 
                     <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
-                            <BiUser className="text-emerald-500" /> General Information
+                            <BiUser className="text-primary" /> General Information
                         </h3>
 
                         <div className="space-y-6">
@@ -115,22 +115,22 @@ const Profile = () => {
 
                     <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
-                            <BiShieldAlt className="text-emerald-500" /> Account Status
+                            <BiShieldAlt className="text-primary" /> Account Status
                         </h3>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-100 flex items-center gap-3">
-                                <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold">A</div>
+                            <div className="p-4 bg-primary/30 rounded-xl border border-emerald-100 flex items-center gap-3">
+                                <div className="w-10 h-10 bg-primary/80 rounded-full flex items-center justify-center text-white font-bold">A</div>
                                 <div>
-                                    <p className="text-xs text-emerald-600 font-bold uppercase">Status</p>
-                                    <p className="text-emerald-800 font-semibold text-sm">Active User</p>
+                                    <p className="text-xs text-primary font-bold uppercase">Status</p>
+                                    <p className="text-primary/120 font-semibold text-sm">Active User</p>
                                 </div>
                             </div>
-                            <div className="p-4 bg-blue-50 rounded-xl border border-blue-100 flex items-center gap-3">
-                                <BiCalendarAlt className="text-blue-500" size={24} />
+                            <div className="p-4 bg-secondary/30 rounded-xl border border-blue-100 flex items-center gap-3">
+                                <BiCalendarAlt className="text-secondary/80" size={24} />
                                 <div>
-                                    <p className="text-xs text-blue-600 font-bold uppercase">Member Since</p>
-                                    <p className="text-blue-800 font-semibold text-sm">Jan 2026</p>
+                                    <p className="text-xs text-secondary font-bold uppercase">Member Since</p>
+                                    <p className="text-secondary/120 font-semibold text-sm">Jan 2026</p>
                                 </div>
                             </div>
                         </div>

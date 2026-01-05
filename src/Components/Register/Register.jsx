@@ -85,16 +85,16 @@ const Register = () => {
                     <form className="card-body" action="" onSubmit={handleRegister}>
                         <fieldset className="fieldset">
                             <label className="label">Name</label>
-                            <input type="text" className="input" placeholder="Name" name='name' />
+                            <input type="text" className="input"  name='name' />
 
                             <label className="label">Email</label>
-                            <input type="email" className="input" placeholder="Email" name='email' />
+                            <input type="email" className="input"  name='email' />
 
                             <label className="label">Photo URL</label>
-                            <input type="text" className="input" placeholder="Photo URL" name='photo' />
+                            <input type="text" className="input"  name='photo' />
 
                             <label className="label">Password</label>
-                            <input type="password" className="input" placeholder="Password" name='password' />
+                            <input type="password" className="input"  name='password' />
 
 
                             <span className='mx-auto text-center'>Or</span>

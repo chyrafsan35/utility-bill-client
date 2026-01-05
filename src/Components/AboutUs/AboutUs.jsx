@@ -6,7 +6,7 @@ import { NavLink } from 'react-router';
 const AboutUs = () => {
     return (
         <div className='min-h-screen bg-white'>
-            <div className='bg-[#F0FDF4] py-20 px-5'> 
+            <div className='bg-primary/30 py-20 px-5'> 
                 <div className='max-w-4xl mx-auto text-center'>
                     <h1 className='text-2xl md:text-3xl font-black text-gray-900 mb-6 tracking-tight'>Simplifying Utility Management</h1>
                     <p className='text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto'>

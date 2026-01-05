@@ -82,7 +82,6 @@ const Contact = () => {
                                     <label className='text-sm font-semibold text-gray-600 ml-1'>Name</label>
                                     <input
                                         type="text"
-                                        placeholder="John Doe"
                                         className="w-full p-3 text-sm bg-gray-50 border border-transparent focus:border-primary focus:bg-white rounded-xl outline-none transition-all"
                                         name='name'
                                         required
@@ -92,7 +91,6 @@ const Contact = () => {
                                     <label className='text-sm font-semibold text-gray-600 ml-1'>Email</label>
                                     <input
                                         type="email"
-                                        placeholder="john@example.com"
                                         className="w-full p-3 text-sm bg-gray-50 border border-transparent focus:border-primary focus:bg-white rounded-xl outline-none transition-all"
                                         name='email'
                                         required
@@ -105,7 +103,6 @@ const Contact = () => {
                                 <textarea
                                     name="issue"
                                     rows={4}
-                                    placeholder='Describe your issue here...'
                                     className="w-full p-3 text-sm  bg-gray-50 border border-transparent focus:border-primary focus:bg-white rounded-xl outline-none transition-all resize-none"
                                     required
                                 ></textarea>
